@@ -34,7 +34,7 @@ public class EbayAdvanceSearch_Steps {
 
     @Then("I am navigated back to the eBay home page")
     public void i_am_navigated_back_to_the_e_bay_home_page() {
-        String ExpUrl = "https://www.ebay.com/";
+        String ExpUrl = "https://www.ebay.com1/";
         String actUrl = common_actions.getCurrentPageUrl();
         assertEquals(ExpUrl, actUrl);
     }
