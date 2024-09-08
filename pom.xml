@@ -84,12 +84,20 @@
                 </configuration>
             </plugin>
 
-            <!-- Maven Surefire Plugin for running tests -->
+            <!-- Maven Surefire Plugin for running tests with parallel execution -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <!-- Parallel execution settings -->
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount> <!-- Adjust the thread count as needed -->
+                    <forkCount>1</forkCount> <!-- Number of JVMs to fork, increase if necessary -->
+                    <reuseForks>true</reuseForks>
+                    <includes>
+                        <include>**/TestRunner.java</include>
+                    </includes>
                     <systemPropertyVariables>
                         <cucumber.options>--plugin json:${project.build.directory}/json-report/cucumber.json</cucumber.options>
                     </systemPropertyVariables>

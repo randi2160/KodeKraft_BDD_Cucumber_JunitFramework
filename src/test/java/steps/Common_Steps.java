@@ -22,13 +22,15 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static utils.ScreenshotUtil.takeScreenshot;
+
 public class Common_Steps {
     private WebDriver driver;
 
     @Before
     public void setUp() {
         String browser = System.getProperty("browser", "chrome"); // Default to Chrome if no browser is specified
-        boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "true")); // Default to true, turn false if debugging
+        boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false")); // Default to true, turn false if debugging
 
         switch (browser.toLowerCase()) {
             case "firefox":
@@ -69,35 +71,23 @@ public class Common_Steps {
     @After
     public void tearDown(Scenario scenario) {
         if(scenario.isFailed()){
-            takeScreenshot(scenario);
+            takeScreenshot(driver,scenario);
         }
         if (driver != null) {
             driver.quit();
         }
     }
 
-    private void takeScreenshot(Scenario scenarios){
-        if(driver instanceof TakesScreenshot){
-            TakesScreenshot ts = (TakesScreenshot) driver;
-            byte[] screenshot =ts.getScreenshotAs(OutputType.BYTES);
-            scenarios.attach(screenshot,"image/png", "Screenshot");
-            //optionally save this to a file
-           /* File screenshotFile = ts. getScreenshotAs(OutputType.FILE);
-            String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-            try{
-                Files.copy(screenshotFile.toPath(),
-                        Paths.get("screenshots", scenarios.getName() + " "+ timestamp  + ".png"));
-            }
-
-            catch (IOException e){
-                e.printStackTrace();
-
-            }*/
 
 
-        }
-    }
-
+    /*  private void takeScreenshot(Scenario scenarios){
+          if(driver instanceof TakesScreenshot){
+              TakesScreenshot ts = (TakesScreenshot) driver;
+              byte[] screenshot =ts.getScreenshotAs(OutputType.BYTES);
+              scenarios.attach(screenshot,"image/png", "Screenshot");
+          }
+      }
+  */
     public WebDriver getDriver() {
         return driver;
     }
