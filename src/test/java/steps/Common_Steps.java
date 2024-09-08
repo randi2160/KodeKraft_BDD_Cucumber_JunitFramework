@@ -30,7 +30,7 @@ public class Common_Steps {
     @Before
     public void setUp() {
         String browser = System.getProperty("browser", "chrome"); // Default to Chrome if no browser is specified
-        boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false")); // Default to true, turn false if debugging
+        boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "true")); // Default to true, turn false if debugging
 
         switch (browser.toLowerCase()) {
             case "firefox":
