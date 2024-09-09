@@ -3,13 +3,13 @@ package actions;
 import elements.EbayAdvancedSearch_Elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import steps.Common_Steps;
+import steps.Base;
 
 public class EbayAdvancedSearch_Actions {
     private WebDriver driver;
     private EbayAdvancedSearch_Elements ebayadvancedsearch_elements;
 
-    public EbayAdvancedSearch_Actions(Common_Steps common_steps) {
+    public EbayAdvancedSearch_Actions(Base common_steps) {
         this.driver = common_steps.getDriver();
         ebayadvancedsearch_elements = new EbayAdvancedSearch_Elements(driver);
         PageFactory.initElements(driver, ebayadvancedsearch_elements); // Initialize elements with PageFactory

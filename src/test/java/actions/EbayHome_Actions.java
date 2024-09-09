@@ -4,7 +4,7 @@ import elements.EbayHome_Elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import steps.Common_Steps;
+import steps.Base;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class EbayHome_Actions {
     private WebDriver driver;
     private EbayHome_Elements ebayHomeElements;
 
-    public EbayHome_Actions(Common_Steps common_steps) {
+    public EbayHome_Actions(Base common_steps) {
         this.driver = common_steps.getDriver();
         ebayHomeElements = new EbayHome_Elements(driver);
         PageFactory.initElements(driver, ebayHomeElements); // Initialize elements with PageFactory

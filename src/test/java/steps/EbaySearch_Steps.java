@@ -15,7 +15,7 @@ public class EbaySearch_Steps {
 
     WebDriver driver;
 
-    public EbaySearch_Steps(Common_Steps commonSteps)
+    public EbaySearch_Steps(steps.Base commonSteps)
     {
         this.driver=commonSteps.getDriver();
     }
