@@ -6,7 +6,13 @@
     <groupId>org.spotify</groupId>
     <artifactId>CucumberFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <!-- Add any additional repositories if needed -->
+    </repositories>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -39,7 +45,11 @@
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.32</version> <!-- Ensure you use the latest stable version -->
+        </dependency>
         <!-- Cucumber PicoContainer for Dependency Injection -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -99,7 +109,7 @@
                         <include>**/TestRunner.java</include>
                     </includes>
                     <systemPropertyVariables>
-                        <cucumber.options>--plugin json:${project.build.directory}/json-report/cucumber.json</cucumber.options>
+                        <cucumber.plugin>json:${project.build.directory}/json-report/cucumber.json</cucumber.plugin>
                     </systemPropertyVariables>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>

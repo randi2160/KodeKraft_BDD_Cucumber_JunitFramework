@@ -7,12 +7,12 @@ import steps.Common_Steps;
 
 public class Common_Actions {
     private WebDriver driver;
+    private EbayHome_Elements ebayHomeElements;
 
-    EbayHome_Elements ebayHomeElements;
-
-    public Common_Actions(Common_Steps common_steps){
+    public Common_Actions(Common_Steps common_steps) {
         this.driver = common_steps.getDriver();
         ebayHomeElements = new EbayHome_Elements(driver);
+        PageFactory.initElements(driver, ebayHomeElements); // Initialize elements with PageFactory
     }
 
     public void goToUrl(String url) {
@@ -28,12 +28,12 @@ public class Common_Actions {
     }
 
     public void quitWebDriver() {
-         driver.quit();
+        driver.quit();
     }
+
     public int getSearchItemsCount() {
         String itemCount = ebayHomeElements.searchResultsCount.getText().trim();
         String itemCount2 = itemCount.replace(",", "");
         return Integer.parseInt(itemCount2);
     }
-
 }
